@@ -1,0 +1,19 @@
+name: Deploy
+
+on:
+  workflow_run:
+    workflows: [CI]
+    branches: [main]
+    types:
+      - completed
+
+jobs:
+  on-success:
+    name: Deply to fly
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: superfly/flyctl-actions/setup-flyctl@master
+    - run: flyctl deploy --remote-only
+      env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
