@@ -1,0 +1,22 @@
+{
+  "name": "hygieia",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/navarathnalu/hygieia.git"
+  },
+  "author": "Abhilash Kasula",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/navarathnalu/hygieia/issues"
+  },
+  "homepage": "https://github.com/navarathnalu/hygieia#readme",
+  "dependencies": {
+    "telegraf": "^4.12.2"
+  }
+}
