@@ -14,11 +14,7 @@ const help = ctx => {
   ctx.replyWithMarkdownV2(message);
 };
 
-const track = async (ctx, details) => {
-  const user = details || await ctx.db.getUser(ctx.chat.id);
-  if (!user) {
-    return ctx.scene.enter('TRACKER_DETAILS');
-  }
+const replyWithStatus = (ctx, user) => {
   const lastDate = moment(user.lastDate);
   const nextDate = moment(user.lastDate);
   nextDate.add(user.cycleLength, constants.days);
@@ -29,6 +25,14 @@ const track = async (ctx, details) => {
       constants.date_format
     )}\nCycle length: ${user.cycleLength}`
   );
+}
+
+const track = async (ctx) => {
+  const user = await ctx.db.getUser(ctx.chat.id);
+  if (!user) {
+    return ctx.scene.enter('TRACKER_DETAILS');
+  }
+  replyWithStatus(ctx, user)
 };
 
-module.exports = {help, track};
+module.exports = {help, track, replyWithStatus};

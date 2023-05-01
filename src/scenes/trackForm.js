@@ -1,7 +1,7 @@
 const {Scenes} = require('telegraf');
 const moment = require('moment');
 const constants = require('../constants');
-const {track} = require('../handlers');
+const {replyWithStatus} = require('../handlers');
 const {
   messages: {details_form: formConstants},
   cycle_length,
@@ -55,7 +55,7 @@ const askForPeriodDate = ctx => {
   return ctx.wizard.next();
 };
 
-const validateLastPeriodDate = ctx => {
+const validateLastPeriodDate = async ctx => {
   const lastDate = ctx.message.text;
   const date = moment(lastDate, constants.date_format);
   const currentTime = moment(
@@ -78,13 +78,13 @@ const validateLastPeriodDate = ctx => {
   }
 
   ctx.wizard.state.lastDate = date.toDate();
+  await ctx.db.insertUser(ctx.chat.id, ctx.wizard.state);
   leave(ctx);
+  replyWithStatus(ctx, ctx.wizard.state);
 };
 
-const leave = async ctx => {
-  await ctx.db.insertUser(ctx.chat.id, ctx.wizard.state);
+const leave = ctx => {
   ctx.scene.leave();
-  track(ctx, ctx.wizard.state);
 };
 
 const trackForm = new Scenes.WizardScene(
