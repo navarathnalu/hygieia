@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/navarathnalu/hygieia#readme",
   "dependencies": {
+    "moment": "^2.29.4",
+    "mongodb": "^5.3.0",
     "telegraf": "^4.12.2"
   }
 }
