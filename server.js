@@ -1,5 +1,5 @@
-const {Telegraf, Scenes, session} = require('telegraf');
-const {MongoClient} = require('mongodb');
+const { Telegraf, Scenes, session } = require('telegraf');
+const { MongoClient } = require('mongodb');
 const handlers = require('./src/handlers');
 const Database = require('./src/db');
 const trackForm = require('./src/scenes/trackForm');
@@ -26,7 +26,7 @@ const onStop = signal => {
 
 bot.use((ctx, next) => {
   ctx.db = db;
-  return next()
+  return next();
 });
 bot.use(session());
 bot.use(stage.middleware());
@@ -35,7 +35,7 @@ bot.start(handlers.help);
 bot.command('track', handlers.track);
 
 bot.help(handlers.help);
-bot.launch({webhook: {domain, port}});
+bot.launch({ webhook: { domain, port } });
 
 // Enable graceful stop
 process.once('SIGINT', () => onStop('SIGINT'));
