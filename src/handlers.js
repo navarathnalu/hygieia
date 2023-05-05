@@ -1,4 +1,4 @@
-const moment = require('moment')
+const moment = require('moment');
 const constants = require('./constants');
 
 const help = ctx => {
@@ -25,14 +25,14 @@ const replyWithStatus = (ctx, user) => {
       constants.date_format
     )}\nCycle length: ${user.cycleLength}`
   );
-}
+};
 
 const track = async (ctx) => {
   const user = await ctx.db.getUser(ctx.chat.id);
   if (!user) {
     return ctx.scene.enter('TRACKER_DETAILS');
   }
-  replyWithStatus(ctx, user)
+  replyWithStatus(ctx, user);
 };
 
-module.exports = {help, track, replyWithStatus};
+module.exports = { help, track, replyWithStatus };

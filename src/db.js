@@ -20,7 +20,7 @@ class Database {
   }
 
   async getUser(_id) {
-    return await this.users.findOne({_id})
+    return await this.users.findOne({ _id });
   }
 }
 

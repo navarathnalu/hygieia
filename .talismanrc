@@ -1,0 +1,4 @@
+fileignoreconfig:
+- filename: .eslintrc.js
+  checksum: 7106757f87d69f8cb94b4a23eb3aeaa5a88d020bf83fa2f82da041c5c5f0277c
+version: "1.0"

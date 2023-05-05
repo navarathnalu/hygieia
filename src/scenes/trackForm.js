@@ -1,9 +1,9 @@
-const {Scenes} = require('telegraf');
+const { Scenes } = require('telegraf');
 const moment = require('moment');
 const constants = require('../constants');
-const {replyWithStatus} = require('../handlers');
+const { replyWithStatus } = require('../handlers');
 const {
-  messages: {details_form: formConstants},
+  messages: { details_form: formConstants },
   cycle_length,
   period_length,
 } = constants;
