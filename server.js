@@ -29,7 +29,7 @@ const onStop = signal => {
 
 const onError = error => {
   console.error(error);
-  onStop('STOP');
+  onStop('SIGQUIT');
 };
 
 bot.use((ctx, next) => {
