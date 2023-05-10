@@ -1,0 +1,4 @@
+fileignoreconfig:
+- filename: test/SampleTest.js
+  checksum: 82fe3797a04c34d9fdf2e3d661bc7190e07e7c9f689a4268230de6dfa99a7650
+version: "1.0"
