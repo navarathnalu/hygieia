@@ -3,11 +3,13 @@ const { MongoClient } = require('mongodb');
 const handlers = require('./src/handlers');
 const Database = require('./src/db');
 const trackForm = require('./src/scenes/trackForm');
-const port = process.env.PORT || 2000;
-const domain = process.env.HOSTNAME;
+const environmentConfig = require('./environmentConfig');
 
-const bot = new Telegraf(process.env.BOT_TOKEN);
-const db = new Database(new MongoClient(process.env.MONGO_URL));
+const port = environmentConfig.getPort();
+const domain = environmentConfig.getHost();
+
+const bot = new Telegraf(environmentConfig.getBotToken());
+const db = new Database(new MongoClient(environmentConfig.getMongoUrl()));
 const stage = new Scenes.Stage([trackForm]);
 
 (async () => {
@@ -24,6 +26,11 @@ const onStop = signal => {
   bot.stop(signal);
 };
 
+const onError = error => {
+  console.error(error);
+  onStop('SIGQUIT');
+};
+
 bot.use((ctx, next) => {
   ctx.db = db;
   return next();
@@ -35,7 +42,7 @@ bot.start(handlers.help);
 bot.command('track', handlers.track);
 
 bot.help(handlers.help);
-bot.launch({ webhook: { domain, port } });
+bot.launch({ webhook: { domain, port } }).catch(onError);
 
 // Enable graceful stop
 process.once('SIGINT', () => onStop('SIGINT'));
