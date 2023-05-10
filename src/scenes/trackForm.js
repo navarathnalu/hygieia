@@ -59,8 +59,8 @@ const validateLastPeriodDate = async ctx => {
   const lastDate = ctx.message.text;
   const date = moment(lastDate, constants.date_format);
   const currentTime = moment(
-      moment().format(constants.date_format),
-      constants.date_format
+    moment().format(constants.date_format),
+    constants.date_format
   );
   const ninetyDaysBefore = moment(currentTime);
   ninetyDaysBefore.subtract(constants.ninety, constants.days);
@@ -88,12 +88,12 @@ const leave = ctx => {
 };
 
 const trackForm = new Scenes.WizardScene(
-    'TRACKER_DETAILS',
-    askForName,
-    askForCycleLength,
-    askForPeriodLength,
-    askForPeriodDate,
-    validateLastPeriodDate
+  'TRACKER_DETAILS',
+  askForName,
+  askForCycleLength,
+  askForPeriodLength,
+  askForPeriodDate,
+  validateLastPeriodDate
 );
 
 trackForm.command('cancel', leave);
