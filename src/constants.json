@@ -14,6 +14,11 @@
       "last_date_invalid": "Please enter a valid date",
       "last_date_future": "The date of last period cannot be a future date. Please enter a valid date.",
       "last_date_earlier_than_90": "The date of last period cannot be earlier than 90 days from today. Please consult a doctor if the date is correct. Otherwise enter a valid date."
+    },
+    "track": {
+      "period_today": "Based on your cycle length, there is chance of getting your period today\\. Keep your menstrual products handy\\.",
+      "period_exceeds_by_2_days": "Looks like your expected date exceeded the cycle length\\. Incase if you already got your period, please log it using /logCurrentDate\\.",
+      "period_exceeds_by_35_days": "Looks like your expected date exceeded the cycle length\\. Incase if you already got your period, please log it using /logCurrentDate\\. Otherwise please consult a doctor if you are experiencing these irregular periods frequently\\."
     }
   },
   "cycle_length": {
