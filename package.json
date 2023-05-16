@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "npm run lint && mocha",
-    "lint": "npx eslint ."
+    "lint": "npx eslint .",
+    "local": "node local.js"
   },
   "repository": {
     "type": "git",
