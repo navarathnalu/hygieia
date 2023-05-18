@@ -82,7 +82,7 @@ const validateLastPeriodDate = async ctx => {
     date,
     ctx.wizard.state.cycleLength
   ).toDate();
-  console.log(ctx.wizard.state.nextDate)
+  console.log(ctx.wizard.state.nextDate);
   await ctx.db.insertUser(ctx.chat.id, ctx.wizard.state);
   leave(ctx);
   replyWithStatus(ctx, ctx.wizard.state);
