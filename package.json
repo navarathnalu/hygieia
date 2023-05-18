@@ -7,7 +7,7 @@
     "test": "npm run lint && mocha",
     "lint": "npx eslint .",
     "local": "node local.js",
-    "db": "docker compose up"
+    "database": "docker compose up"
   },
   "repository": {
     "type": "git",
