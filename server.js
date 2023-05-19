@@ -31,17 +31,25 @@ const onError = error => {
   onStop('SIGQUIT');
 };
 
+const logger = (context, next) => {
+  const { from } = context;
+  console.log(`Message from ${from.id}-${from.username}: ${context.message.text}`);
+  return next();
+};
+
 bot.use((ctx, next) => {
   ctx.db = db;
   return next();
 });
 bot.use(session());
 bot.use(stage.middleware());
+bot.use(logger);
 
 bot.start(handlers.help);
+bot.help(handlers.help);
 bot.command('track', handlers.track);
 
-bot.help(handlers.help);
+bot.on('text', ctx => ctx.reply('Unknown command!\nPlease use /help to know available commands'));
 bot.launch({ webhook: { domain, port } }).catch(onError);
 
 // Enable graceful stop
