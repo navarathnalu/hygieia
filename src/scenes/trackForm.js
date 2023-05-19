@@ -82,7 +82,6 @@ const validateLastPeriodDate = async ctx => {
     date,
     ctx.wizard.state.cycleLength
   ).toDate();
-  console.log(ctx.wizard.state.nextDate)
   await ctx.db.insertUser(ctx.chat.id, ctx.wizard.state);
   leave(ctx);
   replyWithStatus(ctx, ctx.wizard.state);
@@ -105,7 +104,7 @@ trackForm.command('cancel', leave);
 
 const calculateNextDate = (lastDate, cycleLength) => {
   const today = moment();
-  const before35Days = moment(today).subtract(35, constants.days)
+  const before35Days = moment(today).subtract(35, constants.days);
   let next = moment(lastDate).add(cycleLength, constants.days);
   if (before35Days.isSame(lastDate) || lastDate.isBefore(before35Days)) {
     while(next.isBefore(today)) {
