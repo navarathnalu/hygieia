@@ -49,7 +49,7 @@ bot.start(handlers.help);
 bot.help(handlers.help);
 bot.command('track', handlers.track);
 
-bot.on('text', ctx => ctx.reply('Unknown command!!!\nPlease use /help to know valid commands'));
+bot.on('text', ctx => ctx.reply('Unknown command!\nPlease use /help to know available commands'));
 bot.launch({ webhook: { domain, port } }).catch(onError);
 
 // Enable graceful stop
