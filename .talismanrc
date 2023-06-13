@@ -2,7 +2,7 @@ fileignoreconfig:
 - filename: .eslintrc.js
   checksum: 7106757f87d69f8cb94b4a23eb3aeaa5a88d020bf83fa2f82da041c5c5f0277c
 - filename: environmentConfig.js
-  checksum: 19197ceda5dba604f5a121e00aa6dd790f8782a3bf683a7b116c088b05277752
+  checksum: 40d7f7a6b30ae9fb90ef74470b4e8adca62d8d02eb2a49a1de29429327f6c479
 - filename: test/SampleTest.js
   checksum: 82fe3797a04c34d9fdf2e3d661bc7190e07e7c9f689a4268230de6dfa99a7650
 version: "1.0"
